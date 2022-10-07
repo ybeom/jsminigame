@@ -1,0 +1,88 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 320px;
+    margin: 0 auto;
+}
+.header-container {
+    background-color: #ffcd29;
+    width: 100%;
+    margin-top: 50px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+.header-container .game-header {
+    font-size: 30px;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+.main-container {
+    background-color: #ffe8a3;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.main-container .main-box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 20px;
+}
+.main-container .main-box .main-title {
+    background-color: white;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+.main-container .main-box ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.main-container .main-box ul li {
+    width: 40%;
+    margin-top: 20px;
+    text-align: center;
+}
+.main-container .main-box ul li #game-title {
+    background-color: #0d99ff;
+    color: white;
+}
+.main-container .main-box ul li #game-img {
+    background-color: #bde3ff;
+    margin-top: 10px;
+    height: 90px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.main-container .main-box ul li #game-img img {
+    width: 100%;
+}
+.footer-container {
+    margin-top: 30px;
+    background-color: gainsboro;
+    width: 100%;
+}
+.footer-container div {
+    text-align: center;
+}
