@@ -3,3 +3,27 @@ layout: default
 stylesheet: "index.css"
 javascript: "index.js"
 ---
+
+<div class="main-box">
+    <div class="main-title">진행할 게임을 선택하세요!</div>
+    <ul>
+        <li>
+            <div id="game-title">가위바위보 게임</div>
+            <div id="game-img"><img /></div>
+        </li>
+        <li>
+            <div id="game-title">뱀 게임</div>
+            <div id="game-img">
+                <a href="{{'/game/snake' | relative_url}}"><img /></a>
+            </div>
+        </li>
+        <li>
+            <div id="game-title">2048 게임</div>
+            <div id="game-img"><img /></div>
+        </li>
+        <li>
+            <div id="game-title">짝맞추기 게임</div>
+            <div id="game-img"><img /></div>
+        </li>
+    </ul>
+</div>

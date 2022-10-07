@@ -20,29 +20,7 @@
     <body>
         <div class="container">
             <header class="header-container">{% include header.html %}</header>
-            <main class="main-container">
-                <div class="main-box">
-                    <div class="main-title">진행할 게임을 선택하세요!</div>
-                    <ul>
-                        <li>
-                            <div id="game-title">가위바위보 게임</div>
-                            <div id="game-img"><img /></div>
-                        </li>
-                        <li>
-                            <div id="game-title">테트리스 게임</div>
-                            <div id="game-img"><img /></div>
-                        </li>
-                        <li>
-                            <div id="game-title">2048 게임</div>
-                            <div id="game-img"><img /></div>
-                        </li>
-                        <li>
-                            <div id="game-title">짝맞추기 게임</div>
-                            <div id="game-img"><img /></div>
-                        </li>
-                    </ul>
-                </div>
-            </main>
+            <main class="main-container">{{content}}</main>
             <footer class="footer-container">{% include footer.html %}</footer>
         </div>
     </body>
