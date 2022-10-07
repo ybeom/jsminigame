@@ -1,0 +1,26 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{site.title}}</title>
+        <link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url }}" />
+
+        {% if page.stylesheet %} {% assign customStyleSheet = "assets/css/" | append: page.stylesheet %}
+        <link rel="stylesheet" href="{{customStyleSheet | relative_url }}" />
+        {% endif %} {% if page.javascript %} {% assign customJavaScript = "assets/js/" | append: page.javascript %}
+        <script src="{{customJavaScript | relative_url}}"></script>
+        {% endif %}
+    </head>
+    <body>
+        <div class="container">
+            <header class="header-container">{% include header.html %}</header>
+            <main class="main-container">{{content}}</main>
+            <footer class="footer-container">{% include footer.html %}</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+# 서버 구동
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# 사이트 세팅 + 호출법
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: "JS MINIGAME"
+subtitle: ""
+email:
+    gr: ""
+    yb: "ybeom.me@gmail.com"
+name:
+    gr: "규리"
+    yb: "영범"
+description: "자바스크립트로 오픈소스 미니게임을 만듭니다."
+url: "https://ybeom.github.io/jsminigame"
+
+# 리딩 파일 리소스
+exclude:
+    - config
+    - README
+
+encoding: "utf-8"
+
+#sass/scss
+sass:
+    sass_dir: _sass
+    style: compressed
+
+#rendering output options
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
