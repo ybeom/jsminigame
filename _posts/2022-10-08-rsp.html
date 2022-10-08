@@ -7,17 +7,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="wifth=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ 'assets/css/rsp.css' | relative_url }}" />
+    <link rel="stylesheet" href="../assets/css/rsp.css" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
     <title>Rock Scissors Paper</title>
   </head>
   <body>
-    <header><div class="header-title">가위바위보 게임</div></header>
-    <main role="main">
-      <div class="main-box">
-        <div>버튼을 눌러보세요!!</div>
-        <div><img src="#" alt="" /></div>
+    <header><div class="header-container">가위바위보 게임</div></header>
+    <main role="main" class="main-container">
+      <div class="content-container">
+        <div id="imoji-container">
+          <div>✊</div>
+          <div>✌</div>
+          <div>✋</div>
+        </div>
+        <div id="button-container">
+          <button>가위</button>
+          <button>바위</button>
+          <button>보</button>
+        </div>
+        <div id="result-container">결과는?</div>
       </div>
     </main>
-    <footer></footer>
+    <footer class="footer-container"></footer>
   </body>
 </html>
