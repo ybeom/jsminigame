@@ -7,7 +7,8 @@ export const initialState = {
     mapLoading: true,
     isHit: false,
 
-    snakeArr: [15, 15],
+    snakeArr: [[15, 15]],
+    target: [],
     currentTail: 1,
 
     level: 1,
@@ -28,6 +29,14 @@ export function checkGameStatus(state) {
     }
 
     return state;
+}
+
+export function setTarget(state, target) {
+    return { ...state, target };
+}
+
+export function setMapLoading(state, mapLoading) {
+    return { ...state, mapLoading };
 }
 
 export function initializeState(state) {}

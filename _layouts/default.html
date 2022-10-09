@@ -21,8 +21,8 @@
             <main class="main-container">{{content}}</main>
             <footer class="footer-container">{% include footer.html %}</footer>
         </div>
-        {% if page.javascripts %} {% for script in page.javascripts %} {% assign customJavaScript = "assets/js/" | append: script %}
+        {% if page.javascript %} {% assign customJavaScript = "assets/js/bundle/" | append: page.javascript %}
         <script src="{{customJavaScript | relative_url}}"></script>
-        {% endfor %} {% endif %}
+        {% endif %}
     </body>
 </html>

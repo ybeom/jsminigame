@@ -11,8 +11,8 @@
     border-bottom: 5px black solid;
     height: 310px;
     display: grid;
-    grid-template-columns: repeat(32, 1fr);
-    grid-template-rows: repeat(32, 1fr);
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 1fr);
 }
 .game-container .game-display .start-btn {
     width: 100px;
@@ -96,4 +96,7 @@
 }
 .snake {
     background-color: black;
+}
+.target {
+    background-color: #ff6654;
 }
