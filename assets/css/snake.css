@@ -11,8 +11,16 @@
     border-bottom: 5px black solid;
     height: 310px;
     display: grid;
-    grid-template-columns: repeat(31, 1fr);
-    grid-template-rows: repeat(31, 1fr);
+    grid-template-columns: repeat(32, 1fr);
+    grid-template-rows: repeat(32, 1fr);
+}
+.game-container .game-display .start-btn {
+    width: 100px;
+    height: 50px;
+    grid-row-start: 16;
+    grid-column-start: 16;
+    border: 2px solid black;
+    cursor: pointer;
 }
 .game-container .game-controller {
     height: 180px;
@@ -33,6 +41,7 @@
     height: 30px;
     top: 5px;
     left: 45px;
+    cursor: pointer;
 }
 .game-container .game-controller .arrow-btn-box #right-btn {
     position: absolute;
@@ -40,6 +49,7 @@
     height: 30px;
     top: 45px;
     right: 5px;
+    cursor: pointer;
 }
 .game-container .game-controller .arrow-btn-box #down-btn {
     position: absolute;
@@ -47,6 +57,7 @@
     height: 30px;
     bottom: 5px;
     left: 47px;
+    cursor: pointer;
 }
 .game-container .game-controller .arrow-btn-box #left-btn {
     position: absolute;
@@ -54,6 +65,7 @@
     height: 30px;
     bottom: 45px;
     left: 5px;
+    cursor: pointer;
 }
 .game-container .game-controller .function-btn-box {
     width: 50px;
@@ -73,10 +85,15 @@
     position: absolute;
     left: 5px;
     top: 15px;
+    cursor: pointer;
 }
 .game-container .game-controller .function-btn-box .function-b {
     background-color: #2ce4fe;
     position: absolute;
     left: 5px;
     bottom: 15px;
+    cursor: pointer;
+}
+.snake {
+    background-color: black;
 }

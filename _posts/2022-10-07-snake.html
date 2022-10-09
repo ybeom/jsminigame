@@ -3,11 +3,15 @@ layout: post
 title: "snake"
 categories: game
 stylesheet: "snake.css"
-javascript: "snake/snake.js"
+javascripts:
+    - snake/snake.js
+    - snake/app.js
 ---
 
 <div class="game-container">
-    <div class="game-display"></div>
+    <div class="game-display">
+        <button class="start-btn">START</button>
+    </div>
     <div class="game-controller">
         <div class="arrow-btn-box">
             <img id="up-btn" src="{{'assets/images/snake/caret-up.svg' | relative_url}}" />

@@ -1,17 +1,20 @@
-import { initialState, initializeState } from "./state";
-import { render } from "./components";
+import { initialState, initializeState, startGame, checkGameStatus } from "./state";
+import { gameMapLayout, render } from "./components";
 const App = () => {
     let state = { ...initialState };
 
-    function changeStaet(callback) {
+    function changeState(callback) {
         state = callback(state);
         render();
     }
 
     function onClickStart() {
-        if (!state.mapLoading) {
-        }
+        changeState((state) => startGame(state));
+        render(state, gameMapLayout);
     }
+    console.log(1);
+    render(state, gameMapLayout);
+    console.log(2);
 };
 
 export default App;
