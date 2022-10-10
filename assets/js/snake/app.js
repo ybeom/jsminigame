@@ -1,21 +1,33 @@
-import { initialState, initializeState, startGame, checkGameStatus, setMapLoading, setTarget } from "./state";
-import { gameMapLayout, render } from "./components";
+import { initialState, initializeState, startGame, checkGameStatus, setMapLoading, setTarget, decreaseTime, snakeMove, changeDirection } from "./state";
+import { render } from "./components";
+import { isGameEnded } from "./util";
 const App = () => {
     let state = { ...initialState };
 
     function changeState(callback) {
         state = callback(state);
-        render(state, gameMapLayout, onClickStart);
+        render(state, onClickStart, onChangeDirection);
     }
 
     function onClickStart() {
         if (state.target.length != 2) {
             createTarget();
-            console.log(state.target);
         }
         changeState((state) => startGame(state));
+        const intervalId = setInterval(() => {
+            if (isGameEnded(state.gameStatus)) {
+                clearInterval(intervalId);
+                return;
+            }
+            changeState((state) => checkGameStatus(decreaseTime(state)));
+            changeState((state) => snakeMove(state));
+            console.log(state);
+        }, state.speed);
+        render(state, onClickStart, onChangeDirection);
+    }
 
-        render(state, gameMapLayout, onClickStart);
+    function onChangeDirection(direction) {
+        changeState((state) => changeDirection(state, direction));
     }
 
     function createTarget() {
@@ -28,7 +40,7 @@ const App = () => {
         changeState((state) => setTarget(state, target));
     }
 
-    render(state, gameMapLayout, onClickStart);
+    render(state, onClickStart, onChangeDirection);
     changeState((state) => setMapLoading(state, false));
 };
 
