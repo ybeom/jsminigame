@@ -13,9 +13,9 @@ export const initialState = {
     target: [],
 
     level: 1,
-    time: 10,
+    time: 100,
     missionTail: 20,
-    speed: 1000,
+    speed: 50,
 };
 
 export function startGame(state) {

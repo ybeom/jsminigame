@@ -6,7 +6,6 @@ const App = () => {
 
     function changeState(callback) {
         state = callback(state);
-        render(state, onClickStart, onChangeDirection);
     }
 
     function onClickStart() {
@@ -14,15 +13,18 @@ const App = () => {
             createTarget();
         }
         changeState((state) => startGame(state));
-        const intervalId = setInterval(() => {
+        const intervalGameId = setInterval(() => {
             if (isGameEnded(state.gameStatus)) {
-                clearInterval(intervalId);
+                clearInterval(intervalGameId);
                 return;
             }
-            changeState((state) => checkGameStatus(decreaseTime(state)));
             changeState((state) => snakeMove(state));
-            console.log(state);
+            render(state, onClickStart, onChangeDirection);
         }, state.speed);
+        const intervalTimerId = setInterval(() => {
+            changeState((state) => checkGameStatus(decreaseTime(state)));
+            render(state, onClickStart, onChangeDirection);
+        }, 1000);
         render(state, onClickStart, onChangeDirection);
     }
 
@@ -38,6 +40,7 @@ const App = () => {
             }
         });
         changeState((state) => setTarget(state, target));
+        render(state, onClickStart, onChangeDirection);
     }
 
     render(state, onClickStart, onChangeDirection);
