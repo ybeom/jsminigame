@@ -114,7 +114,9 @@
 
 .snake {
     background-color: black;
+    border-radius: 50%;
 }
 .target {
     background-color: #ff6654;
+    border-radius: 50%;
 }
