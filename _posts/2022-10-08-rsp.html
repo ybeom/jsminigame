@@ -6,10 +6,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="wifth=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/rsp.css" />
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <title>Rock Scissors Paper</title>
+    <script defer src="../assets/js/rsp/rsp.js"></script>
   </head>
   <body>
     <div class="container">
@@ -17,14 +18,12 @@
       <main role="main" class="main-container">
         <div class="content-container">
           <div id="imoji-container">
-            <div id="paper-img">✊</div>
-            <div id="scissor-img">✌</div>
-            <div id="rock-img">✋</div>
+            <div id="random-img"></div>
           </div>
           <div id="button-container">
-            <button>가위</button>
-            <button>바위</button>
-            <button>보</button>
+            <button id="button-scissor">가위</button>
+            <button id="button-rock">바위</button>
+            <button id="button-paper">보</button>
           </div>
         </div>
         <div id="result-container">결과는?</div>
