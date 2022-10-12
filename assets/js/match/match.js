@@ -1,5 +1,5 @@
 /* html 요소 선택자 선언 */
-const main_container = document.querySelector("main");
+const main_container = document.getElementById("main-container");
 const result_container = document.getElementById("result-container");
 const imoji_container = document.getElementById("imoji-container");
 const start_btn = document.getElementById("start-btn");
@@ -39,26 +39,25 @@ const img_files = [
 
 // 이미지 카드 초기 셋팅 해주는 함수
 function initialsetImg() {}
-// 랜덤하게 이미지파일 뽑기
-function randomImg() {
-  const random_img = img_files[Math.floor(Math.random() * img_files.length)];
-  return random_img;
-}
-// 이미지카드 섞어서 랜덤 배치
+
 function shuffleImg() {
-  let count = 0;
+  let randomArray = [];
+  let randomNumber = 0;
   for (let i = 0; i < img_files.length; i++) {
-    let randomItem = randomImg();
-    const back_image = document.querySelector(`.back_image_${i}`);
-    //console.log(back_image.src);
-    back_image.src = randomItem;
+    randomNumber = Math.floor(Math.random() * img_files.length);
+    if (randomArray.indexOf(randomNumber) === -1) {
+      randomArray.push(randomNumber);
+    } else {
+      i--;
+    }
   }
 
-  //   img_files.forEach((elem) => {
-  //     let randomItem = randomImg();
-  //     imoji_container.innerHTML += `<img src =${randomItem} class = "rand_image" ></img>`;
-  //   });
+  for (let j = 0; j < img_files.length; j++) {
+    const back_image = document.querySelector(`.back_image_${j}`);
+    back_image.src = img_files[randomArray[j]];
+  }
 }
+
 // 맨 처음 화면 로드 되자마자 카드 전체 뒤집어놓기
 function initImg() {
   const backimg_file = "../img/back_img.png";
@@ -99,6 +98,8 @@ function gameStart() {
     socre_num.innerText = "0";
   }, (timer + 1) * 1000);
 }
+
+// 카드를 선택했을 때
 
 function scoreCount() {
   let score = 0;
