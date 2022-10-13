@@ -23,27 +23,27 @@ let clickCount = 0;
 let score = 0;
 let chance_num = 10;
 
-const backimg_file = "/assets/images/match/back_img.png";
+const backimg_file = "/jsminigame/assets/images/match/back_img.png";
 // 이미지 카드 배열
 const img_files = [
-    "/assets/images/match/01_img.png", //액션가면
-    "/assets/images/match/01_img.png", //액션가면
-    "/assets/images/match/02_img.png", //아구몬
-    "/assets/images/match/02_img.png", //아구몬
-    "/assets/images/match/03_img.png", //바트심슨
-    "/assets/images/match/03_img.png", //바트심슨
-    "/assets/images/match/04_img.png", //코로몬
-    "/assets/images/match/04_img.png", //코로몬
-    "/assets/images/match/05_img.png", //도라에몽
-    "/assets/images/match/05_img.png", //도라에몽
-    "/assets/images/match/06_img.png", //호머심슨
-    "/assets/images/match/06_img.png", //호머심슨
-    "/assets/images/match/07_img.png", //도라미
-    "/assets/images/match/07_img.png", //도라미
-    "/assets/images/match/08_img.png", //토코몬
-    "/assets/images/match/08_img.png", //토코몬
-    "/assets/images/match/09_img.png", //피카츄
-    "/assets/images/match/09_img.png", //피카츄
+    "/jsminigame/assets/images/match/01_img.png", //액션가면
+    "/jsminigame/assets/images/match/01_img.png", //액션가면
+    "/jsminigame/assets/images/match/02_img.png", //아구몬
+    "/jsminigame/assets/images/match/02_img.png", //아구몬
+    "/jsminigame/assets/images/match/03_img.png", //바트심슨
+    "/jsminigame/assets/images/match/03_img.png", //바트심슨
+    "/jsminigame/assets/images/match/04_img.png", //코로몬
+    "/jsminigame/assets/images/match/04_img.png", //코로몬
+    "/jsminigame/assets/images/match/05_img.png", //도라에몽
+    "/jsminigame/assets/images/match/05_img.png", //도라에몽
+    "/jsminigame/assets/images/match/06_img.png", //호머심슨
+    "/jsminigame/assets/images/match/06_img.png", //호머심슨
+    "/jsminigame/assets/images/match/07_img.png", //도라미
+    "/jsminigame/assets/images/match/07_img.png", //도라미
+    "/jsminigame/assets/images/match/08_img.png", //토코몬
+    "/jsminigame/assets/images/match/08_img.png", //토코몬
+    "/jsminigame/assets/images/match/09_img.png", //피카츄
+    "/jsminigame/assets/images/match/09_img.png", //피카츄
 ];
 
 // 이미지 카드 초기 셋팅 해주는 함수
