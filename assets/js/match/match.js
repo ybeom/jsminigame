@@ -6,6 +6,7 @@ const start_btn = document.getElementById("start-btn");
 const score_title = document.getElementById("score-title");
 const socre_num = document.getElementById("socre-num");
 const timer_num = document.getElementById("timer-num");
+const remain_num = document.getElementById("remain-num");
 //승부 결과 창을 html에 삽입 및 css 수정
 const result_box = document.createElement("div");
 result_box.id = "result_box";
@@ -19,6 +20,8 @@ let selectedCard1 = "";
 let selectedCard2 = "";
 let clcikStore = "";
 let clickCount = 0;
+let score = 0;
+let chance_num = 10;
 
 const backimg_file = "../img/back_img.png";
 // 이미지 카드 배열
@@ -67,12 +70,17 @@ function shuffleImg() {
 
 // 맨 처음 화면 로드 되자마자 카드 전체 뒤집어놓기
 function initImg() {
+  remain_num.innerText = chance_num;
   for (let i = 0; i < 18; i++) {
     imoji_container.innerHTML += `<img src =${backimg_file} class = "back_image_${i}" ></img>`;
     // js에서 만든 태그이므로 전역에서는 반환 안하면 못씀.
     const img = document.querySelectorAll("img");
     img.forEach((elem) => elem.addEventListener("click", selectedImg));
   }
+  const img = document.querySelectorAll("img");
+  img.forEach((elem) => {
+    elem.classList.remove("done");
+  });
 }
 // 카드 전체 뒤집기
 function flipImgAll(random_arr) {
@@ -94,7 +102,7 @@ function gameStart() {
   score_title.innerText = "";
   socre_num.innerText = "";
   //점수 초기화
-  scoreCount();
+  scoreInit();
   //이미지카드 섞기
   let random_arr = shuffleImg();
 
@@ -109,14 +117,22 @@ function gameStart() {
     flipImgAll(random_arr);
     timer_num.innerText = "";
     score_title.innerText = "점수 : ";
-    socre_num.innerText = "0";
+    socre_num.innerText = "";
     gameState = "";
   }, (timer + 1) * 1000);
+  chance_num = 10;
+  remain_num.innerText = chance_num;
 }
-
 // 카드를 선택했을 때
 function selectedImg(e) {
+  const img_current = document.querySelectorAll("img");
+  console.log(chance_num);
   if (gameState !== "") return;
+  //게임 끝
+  if (chance_num === 0) {
+    matchResult();
+    return;
+  }
   if (clickCount <= 1) {
     if (clcikStore === "") {
       //id 에 저장된 원래 카드의 인덱스를 통해 이미지를 확인(flipImgAll)
@@ -135,7 +151,7 @@ function selectedImg(e) {
         clickCount++;
         clcikStore = "";
         clickCount = 0;
-        const img_current = document.querySelectorAll("img");
+
         img_current.forEach((elem) => {
           //같은 카드면 클래스 done 추가하여 구별
           if (elem.src === selectedCard1) {
@@ -143,6 +159,9 @@ function selectedImg(e) {
             elem.classList.add("done");
           }
         });
+
+        //점수 증가
+        scoreUp();
       } else {
         clickCount++;
         function flipBack() {
@@ -153,10 +172,14 @@ function selectedImg(e) {
             }
           });
         }
-        setTimeout(flipBack, 2000);
+        setTimeout(flipBack, 1000);
 
         clcikStore = "";
         clickCount = 0;
+        //점수 감소
+        scoreDown();
+        chance_num--;
+        remain_num.innerText = chance_num;
       }
     }
   } else {
@@ -164,14 +187,31 @@ function selectedImg(e) {
     clickCount = 0;
   }
 }
+// 점수 초기화
+function scoreInit() {
+  score = 0;
 
-function scoreCount() {
-  let score = 0;
-  // socre_num.textContent = score;
+  socre_num.textContent = score;
+}
+
+// 점수 증가
+function scoreUp() {
+  score += 10;
+
+  socre_num.textContent = score;
+}
+// 점수 감소
+function scoreDown() {
+  score -= 10;
+
+  socre_num.textContent = score;
 }
 
 // 승부 결과 확인
-function matchResult(event) {}
+function matchResult() {
+  result_box.innerText = `${socre_num.textContent} 점 입니다!`;
+  appearRetrybtn();
+}
 // 다시하기 버튼 기능
 function appearRetrybtn() {
   if (result_box.innerText !== "") {
@@ -191,6 +231,8 @@ function appearRetrybtn() {
 function resetGame() {
   random = setInterval(initialsetImg, 200);
   result_box.innerText = "";
+
+  gameStart();
 }
 
 /* 이벤트 리스너 */

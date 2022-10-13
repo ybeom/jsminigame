@@ -43,7 +43,7 @@ header .header-container {
 
 #btn-container {
   width: 100%;
-  height: 20%;
+  height: 10%;
   box-sizing: border-box;
   text-align: center;
 }
@@ -58,11 +58,19 @@ header .header-container {
   font-weight: bold;
   font-size: 16px;
 }
-
+#game-remain {
+  font-size: 14px;
+}
+#remain-num {
+  font-size: 14px;
+}
 #score-container {
   width: 100%;
   height: 10%;
   box-sizing: border-box;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
 #score-container span {
@@ -101,7 +109,7 @@ header .header-container {
 
 #result-container {
   width: 100%;
-  height: 25%;
+  height: 20%;
   box-sizing: border-box;
   background-color: white;
   padding: 10px;
