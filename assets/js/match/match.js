@@ -13,8 +13,14 @@ result_container.appendChild(result_box);
 result_box.style.marginTop = "10px";
 
 // appearRetrybtn이 버튼 클릭 시 반복해서 수행되지 않도록 막는 변수
-let count = 0;
+let rertyCount = 0;
+let gameState = "";
+let selectedCard1 = "";
+let selectedCard2 = "";
+let clcikStore = "";
+let clickCount = 0;
 
+const backimg_file = "../img/back_img.png";
 // 이미지 카드 배열
 const img_files = [
   "../img/01_img.png", //액션가면
@@ -56,24 +62,31 @@ function shuffleImg() {
     const back_image = document.querySelector(`.back_image_${j}`);
     back_image.src = img_files[randomArray[j]];
   }
+  return randomArray;
 }
 
 // 맨 처음 화면 로드 되자마자 카드 전체 뒤집어놓기
 function initImg() {
-  const backimg_file = "../img/back_img.png";
   for (let i = 0; i < 18; i++) {
     imoji_container.innerHTML += `<img src =${backimg_file} class = "back_image_${i}" ></img>`;
+    // js에서 만든 태그이므로 전역에서는 반환 안하면 못씀.
+    const img = document.querySelectorAll("img");
+    img.forEach((elem) => elem.addEventListener("click", selectedImg));
   }
 }
 // 카드 전체 뒤집기
-function flipImg() {
-  const backimg_file = "../img/back_img.png";
-
+function flipImgAll(random_arr) {
   for (let i = 0; i < 18; i++) {
     const back_image = document.querySelector(`.back_image_${i}`);
+    // id는 고유한 값이며, 각 카드의 인덱스를 id에 넣는다.
+    // 인덱스값을 기억함으로써 src가 바뀌어도 원래 무슨 카드였는지 알아낼 수 있고, 뒤집어서 확인하게 할 수 있다!
+    // console.log(`idx = ${random_arr[i]}, value = ${random_arr[i]}`);
+    back_image.id = random_arr[i];
+
     back_image.src = backimg_file;
   }
 }
+
 // 게임 시작
 function gameStart() {
   // 보여주는 시간
@@ -83,7 +96,8 @@ function gameStart() {
   //점수 초기화
   scoreCount();
   //이미지카드 섞기
-  shuffleImg();
+  let random_arr = shuffleImg();
+
   //타이머 변수 감소하는 함수
   function timeDecrease() {
     timer_num.textContent = timer--;
@@ -92,14 +106,64 @@ function gameStart() {
   let timeStart = setInterval(timeDecrease, 1000);
   setTimeout(() => {
     clearInterval(timeStart);
-    flipImg();
+    flipImgAll(random_arr);
     timer_num.innerText = "";
     score_title.innerText = "점수 : ";
     socre_num.innerText = "0";
+    gameState = "";
   }, (timer + 1) * 1000);
 }
 
 // 카드를 선택했을 때
+function selectedImg(e) {
+  if (gameState !== "") return;
+  if (clickCount <= 1) {
+    if (clcikStore === "") {
+      //id 에 저장된 원래 카드의 인덱스를 통해 이미지를 확인(flipImgAll)
+
+      let idOne = e.target.id;
+      e.target.src = img_files[idOne];
+      clcikStore = e.target.src;
+      selectedCard1 = e.target.src;
+      clickCount++;
+    } else {
+      //id 에 저장된 원래 카드의 인덱스를 통해 이미지를 확인(flipImgAll)
+      let idTwo = e.target.id;
+      e.target.src = img_files[idTwo];
+      selectedCard2 = e.target.src;
+      if (selectedCard1 === selectedCard2) {
+        clickCount++;
+        clcikStore = "";
+        clickCount = 0;
+        const img_current = document.querySelectorAll("img");
+        img_current.forEach((elem) => {
+          //같은 카드면 클래스 done 추가하여 구별
+          if (elem.src === selectedCard1) {
+            elem.classList.add("done");
+            elem.classList.add("done");
+          }
+        });
+      } else {
+        clickCount++;
+        function flipBack() {
+          const img_current = document.querySelectorAll("img");
+          img_current.forEach((elem) => {
+            if (elem.src !== backimg_file && !elem.className.includes("done")) {
+              elem.src = backimg_file;
+            }
+          });
+        }
+        setTimeout(flipBack, 2000);
+
+        clcikStore = "";
+        clickCount = 0;
+      }
+    }
+  } else {
+    clcikStore = "";
+    clickCount = 0;
+  }
+}
 
 function scoreCount() {
   let score = 0;
@@ -113,13 +177,13 @@ function appearRetrybtn() {
   if (result_box.innerText !== "") {
     const btn = document.createElement("button");
 
-    if (result_box.textContent.length !== 0 && count === 0) {
+    if (result_box.textContent.length !== 0 && rertyCount === 0) {
       btn.id = "retry-btn";
       result_container.appendChild(btn);
       btn.textContent = "다시하기";
       const retry_btn = document.getElementById("retry-btn");
       retry_btn.addEventListener("click", resetGame);
-      count++;
+      rertyCount++;
     }
   }
 }
