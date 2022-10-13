@@ -3,7 +3,48 @@ layout: post
 title: "snake"
 categories: game
 stylesheet: "snake.css"
-javascript: "snake/snake.js"
+javascript: "snake.js"
 ---
 
-12345
+<div class="game-info">
+    <div class="level">
+        <label>LEVEL: </label>
+        <div id="level"></div>
+    </div>
+    <div class="mission">
+        <label>MISSION: </label>
+        <div id="mission"></div>
+    </div>
+    <div class="time">
+        <label>TIME: </label>
+        <div id="time"></div>
+    </div>
+    <div class="tail">
+        <label>TAIL: </label>
+        <div id="tail"></div>
+    </div>
+    <div class="score">
+        <label>SCORE: </label>
+        <div id="score"></div>
+    </div>
+</div>
+
+        <div class="game-container">
+            <div class="game-display">
+                <button class="start-btn">START</button>
+            </div>
+            <div class="game-controller">
+                <div class="arrow-btn-box">
+                    <img id="up-btn" src="{{'assets/images/snake/caret-up.svg' | relative_url}}" />
+                    <img id="right-btn" src="{{'assets/images/snake/caret-right.svg' | relative_url}}" />
+                    <img id="down-btn" src="{{'assets/images/snake/caret-down.svg' | relative_url}}" />
+                    <img id="left-btn" src="{{'assets/images/snake/caret-left.svg' | relative_url}}" />
+                </div>
+                <div class="function-btn-box">
+                    <button class="function-a">a</button>
+                    <button class="function-b">b</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
