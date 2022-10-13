@@ -11,7 +11,7 @@ export const initialState = {
     target: [],
     level: 1,
     time: 10,
-    missionTail: 10,
+    missionTail: 5,
     speed: 100,
     score: 0,
 };
