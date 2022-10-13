@@ -21,7 +21,7 @@ let count = 0;
 
 //랜덤한 이미지를 선택해주는 함수
 function selectImg() {
-    const img_files = ["/assets/images/rsp/paper_img.png", "/assets/images/rsp/scissor_img.png", "/assets/images/rsp/rock_img.png"];
+    const img_files = ["/jsminigame/assets/images/rsp/paper_img.png", "/jsminigame/assets/images/rsp/scissor_img.png", "/jsminigame/assets/images/rsp/rock_img.png"];
     // 랜덤하게 이미지파일 뽑기
     const selectedImg = img_files[Math.floor(Math.random() * img_files.length)];
     random_img.innerHTML = `<img src ="${selectedImg}"></img>`;
