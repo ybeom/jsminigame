@@ -1,6 +1,6 @@
 import { render } from "./components";
-import { initialState, startGame, setIsCard, createNewCard } from "./state";
-
+import { initialState, startGame, setIsCard, createNewCard, changeDirection, changeCardValueArr, gameOver, updateMaxNumber, updateScore, initializeState } from "./state";
+import { mergeCard, isGameEnded } from "./utill";
 const App = () => {
     let state = { ...initialState };
     function changeState(callback) {
@@ -11,21 +11,43 @@ const App = () => {
         changeState((state) => startGame(state));
         createCard();
         createCard();
-        render(state, onClickStart);
+        render(state, onClickStart, onChangeCard);
     }
 
     function createCard() {
-        let card = [Math.floor(Math.random() * 4 + 1), Math.floor(Math.random() * 4 + 1)];
+        let card = [Math.floor(Math.random() * 4), Math.floor(Math.random() * 4)];
         let value = 2;
-        Object.keys(state.cardValueObj).forEach((c) => {
-            if (c === `r${card[0]}-c${card[1]}`) {
-                return createCard();
-            }
-        });
+        if (state.cardValueArr[card[0]][card[1]] != 0) {
+            createCard();
+            return;
+        }
         changeState((state) => createNewCard(state, card, value));
     }
 
-    render(state, onClickStart);
+    function onChangeCard(direction) {
+        if (isGameEnded(state.cardValueArr)) {
+            changeState((state) => gameOver(state));
+            render(state, onClickStart, onChangeCard);
+            changeState(() => initializeState());
+        } else {
+            onChangeDirection(direction);
+            onMoveCard();
+            changeState((state) => updateMaxNumber(state));
+            changeState((state) => updateScore(state));
+            createCard();
+        }
+        render(state, onClickStart, onChangeCard);
+    }
+
+    function onChangeDirection(direction) {
+        changeState((state) => changeDirection(state, direction));
+    }
+
+    function onMoveCard() {
+        changeState((state) => changeCardValueArr(state, mergeCard(state.cardValueArr, state.direction)));
+    }
+
+    render(state, onClickStart, onChangeCard);
     changeState((state) => setIsCard(state));
 };
 
