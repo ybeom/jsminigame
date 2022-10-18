@@ -56,7 +56,7 @@ export const gameInfoBox = (level, time, mission, tail, score) => {
     scoreEl.textContent = score;
 };
 
-export const controllerBox = (direction, onChangeDirection) => {
+export const controllerBox = (onChangeDirection) => {
     const arrowUpBtnEL = findElByQuery("#up-btn");
     arrowUpBtnEL.addEventListener("click", () => onChangeDirection("UP"));
     const arrowDownBtnEL = findElByQuery("#down-btn");
@@ -83,5 +83,5 @@ export const controllerBox = (direction, onChangeDirection) => {
 export function render(state, onClickStart, onChangeDirection) {
     gameMapLayout(state.onTarget, state.target, state.snakeArr, state.score, state.gameStatus, state.mapLoading, onClickStart);
     gameInfoBox(state.level, state.time, state.missionTail, state.snakeArr, state.score);
-    controllerBox(state.direction, onChangeDirection);
+    controllerBox(onChangeDirection);
 }

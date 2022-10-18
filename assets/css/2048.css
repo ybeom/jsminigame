@@ -1,3 +1,20 @@
+.game-info {
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+.game-info > div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.game-info > div > label {
+    font-weight: 600;
+    width: 40%;
+    margin-right: 10px;
+    text-align: end;
+}
 .game-container {
     box-sizing: border-box;
     width: 100%;
